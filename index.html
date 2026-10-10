@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        font-family: Arial, sans-serif;
+        background: #111827;
+    }
+    /* Navbar */
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+        background: #111827;
+        position: relative;
+    }
+    .logo{
+        color: white;
+        font-size: 24px;
+    }
+    .nav-links{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        list-style: none;
+    }
+    .nav-links a{
+        color: white;
+        text-decoration: none;
+    }
+    .nav-links a:hover{
+        color: #38bdf8;
+    }
+    .btn{
+        background: #38bdf8;
+        color: #111827;
+        padding: 10px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+    .nav-links a.btn{
+        color: #111827;
+    }
+    .nav-links a.btn:hover{
+        color: #111827;
+        background: #0ea5e9;
+    }
+    .menu-toggle{
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 30px;
+        cursor: pointer;
+    }
+     /* home */
+       .hero{
+        min-height: 70vh;
+        padding: clamp(32px, 6vh, 64px) 8% 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-image:
+                linear-gradient(rgba(79, 172, 254, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 172, 254, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px; /* Changes the size of the grid squares */
+            color: white;
+            background-color: #111827; /* Dark background color */
+        }
+        .availability{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #38bdf8;
+            margin-bottom: 24px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: #2a364b;
+            font-size: 14px;
+        }
+        .status-dot{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #38bdf8;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+        .hero h1{
+            color: white;
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .highlight{
+            color: #38bdf8;
+        }
+        .hero-title{
+            color: #d1d5db;
+            font-size: clamp(24px, 4vw, 38px);
+            margin-bottom: 18px;
+        }
+        #changing-title{
+            color: #38bdf8;
+            display: inline-block;
+            border-right: 2px solid currentColor;
+            padding-right: 3px;
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink{
+            50%{
+                border-color: transparent;
+            }
+        }
+        .hero-description{
+            max-width: 640px;
+            color: #cbd5e1;
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .hero-buttons{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+        }
+        .hero-btn{
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border: 1px solid #38bdf8;
+            border-radius: 6px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .primary-btn{
+            background: #38bdf8;
+            color: #111827;
+        }
+        .hero-btn:hover{
+            background: #0ea5e9;
+            border-color: #0ea5e9;
+            color: #111827;
+        }
+        .whatsapp-icon{
+            color: #38bdf8;
+            font-size: 24px;
+        }
+        .skills-ticker{
+            width: 100%;
+            overflow: hidden;
+            background: #111827;
+            padding: 25px 0;
+            border-top: 1px solid #263449;
+            border-bottom: 1px solid #263449;
+        }
+        .skills-track{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            width: max-content;
+            animation: scrollSkills 10s linear infinite;
+        }
+        .skill{
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #38bdf8;
+            white-space: nowrap;
+            padding: 14px 22px;
+            border-radius: 50px;
+            background: #18243a;
+            font-size: 16px;
+            border: 1px solid #38bdf8;
+            font-weight: 600;
+        }
+        .skill i{
+            font-size: 18px;
+            color: #38bdf8;
+        }
+        .skill .fa-adobe{
+            color: #38bdf8;
+        }
+        .skill .adobe-app-icon{
+            display: inline-flex;
+            width: 22px;
+            height: 22px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid currentColor;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .skill .illustrator-icon{
+            color: #38bdf8;
+            background: #18243a;
+        }
+        .skill .photoshop-icon{
+            color: #38bdf8;
+            background: #18243a;
+        }
+        @keyframes scrollSkills{
+            from{
+                transform: translateX(0);
+            }
+            to{
+                transform: translateX(-50%);
+            }
+        }
+        /* Pause when the mouse hovers over it */
+        .skills-ticker:hover .skills-ticker{
+            animation-play-state: paused;
+        }
+        .about-section{
+            padding: 100px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+            color: #f8fafc;
+            background: #0f172a;
+        }
+        .about-image{
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            margin-inline: auto;
+        }
+        .about-image img{
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+            height: 570px;
+            object-fit: cover;
+            object-position: center;
+            border: 2px solid #38bdf8;
+        }
+        .image-badge{
+            position: absolute;
+            right: -20px;
+            bottom: -12px;
+            padding: 12px 18px;
+            border: 1px solid rgba(56, 189, 248, 0.6);
+            border-radius: 999px;
+            background: rgba(17, 24, 39, 0.9);
+            color: #38bdf8;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+        }
+        .section-label{
+            color: #38bdf8;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 12px;
+        }
+        .about-content h2{
+            font-size: clamp(36px, 4vw, 54px);
+            line-height: 1.1;
+            margin: 18px 0;
+        }
+        .about-content p{
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+        .about-content strong{
+            color: #e2e8f0;
+        }
+        .about-stats{
+            display: flex;
+            gap: 15px;
+            margin-top: 28px;
+        }
+        .stat-card{
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #334155;
+            min-width: 140px;
+        }
+        .stat-card h3{
+            font-size: 24px;
+            color: #38bdf8;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+        .stat-card span{
+            color: #cbd5e1;
+            font-size: 12px;
+        }
+        .projects-section{
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 88px 8%;
+            color: #f8fafc;
+            scroll-margin-top: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.04em;
+        }
+
+        .tiktok-subtitle {
+            max-width: 680px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 36px;
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .tiktok-icon{
+            width: 20px;
+            height: 20px;
+            flex: 0 0 20px;
+            fill: #38bdf8;
+        }
+
+        .projects-grid{
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .project-card{
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding: 18px;
+            border: 1px solid #263449;
+            border-radius: 16px;
+            background: #111c2e;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-card:hover{
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+        }
+
+        .browser-mockup{
+            display: block;
+            overflow: hidden;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            color: inherit;
+            text-decoration: none;
+            background: #0b1220;
+        }
+
+        .browser-mockup:focus-visible{
+            outline: 3px solid #38bdf8;
+            outline-offset: 4px;
+        }
+
+        .browser-bar{
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+            background: #1e293b;
+        }
+
+        .browser-dot{
+            width: 9px;
+            height: 9px;
+            flex: 0 0 9px;
+            border-radius: 50%;
+        }
+
+        .dot-red{ background: #fb7185; }
+        .dot-yellow{ background: #fbbf24; }
+        .dot-green{ background: #34d399; }
+
+        .browser-url{
+            min-width: 0;
+            overflow: hidden;
+            margin-left: 6px;
+            color: #cbd5e1;
+            font-size: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mockup-preview{
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            background: #0f172a;
+        }
+
+        .site-screenshot{
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.3s ease;
+        }
+
+        .browser-mockup:hover .site-screenshot{
+            transform: scale(1.03);
+        }
+
+        .episode-label{
+            margin-bottom: 8px;
+            color: #38bdf8;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .project-title{
+            margin-bottom: 8px;
+            color: #f8fafc;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .contact-section{
+            padding: 88px 8%;
+            color: #f8fafc;
+            background: #0f172a;
+            scroll-margin-top: 24px;
+        }
+
+        .contact-wrapper{
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+            gap: clamp(32px, 6vw, 72px);
+            align-items: start;
+        }
+
+        .contact-info{
+            min-width: 0;
+        }
+
+        .contact-label{
+            color: #38bdf8;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .contact-info h2{
+            margin: 16px 0;
+            color: #f8fafc;
+            font-size: clamp(36px, 4.5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+        }
+
+        .contact-description{
+            max-width: 480px;
+            margin-bottom: 28px;
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .social-links{
+            display: grid;
+            gap: 12px;
+        }
+
+        .social-card{
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 18px;
+            border: 1px solid #263449;
+            border-radius: 12px;
+            background: #111c2e;
+            color: #f8fafc;
+            text-decoration: none;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-card:hover{
+            transform: translateY(-2px);
+            border-color: #38bdf8;
+        }
+
+        .social-card:focus-visible,
+        .submit-btn:focus-visible{
+            outline: 3px solid #38bdf8;
+            outline-offset: 3px;
+        }
+
+        .social-left{
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .social-icon{
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: #1e293b;
+            color: #38bdf8;
+        }
+
+        .social-icon svg,
+        .form-label svg,
+        .input-icon,
+        .submit-btn svg,
+        .form-hint svg{
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .social-text{
+            min-width: 0;
+            display: grid;
+            gap: 4px;
+        }
+
+        .social-platform{
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .social-handle{
+            overflow: hidden;
+            color: #94a3b8;
+            font-size: 13px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .social-arrow{
+            color: #38bdf8;
+            font-size: 22px;
+        }
+
+        .contact-form{
+            min-width: 0;
+            padding: clamp(22px, 4vw, 36px);
+            border: 1px solid #263449;
+            border-radius: 16px;
+            background: #111c2e;
+        }
+
+        .contact-form form{
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group{
+            min-width: 0;
+            position: relative;
+            display: grid;
+            gap: 9px;
+        }
+
+        .form-label{
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-label svg{
+            width: 18px;
+            height: 18px;
+            color: #38bdf8;
+        }
+
+        .form-input,
+        .form-textarea{
+            width: 100%;
+            min-height: 50px;
+            padding: 14px 16px;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            outline: none;
+            background: #0b1220;
+            color: #f8fafc;
+            font: inherit;
+            font-size: 15px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder{
+            color: #64748b;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus{
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        .form-textarea{
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .input-icon{
+            display: none;
+        }
+
+        .submit-btn{
+            min-height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border: 0;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: #111827;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .submit-btn:hover{
+            transform: translateY(-1px);
+            background: #0ea5e9;
+        }
+
+        .form-hint{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .form-hint svg{
+            width: 16px;
+            height: 16px;
+            flex: 0 0 16px;
+            color: #38bdf8;
+        }
+
+        .footer{
+            display: flex;
+            justify-content: center;
+            padding: 24px 6%;
+            border-top: 1px solid #263449;
+            background: #0b1220;
+            color: #94a3b8;
+            text-align: center;
+        }
+
+        .footer p{
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer span{
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px){
+            .contact-section{
+                padding-inline: 6%;
+            }
+            .contact-wrapper{
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 480px){
+            .contact-section{
+                padding: 64px 6%;
+            }
+            .contact-form{
+                padding: 20px 16px;
+            }
+            .social-card{
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .projects-section{
+                padding-inline: 6%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .projects-section{
+                padding: 64px 6%;
+            }
+            .projects-grid{
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .project-card{
+                padding: 14px;
+            }
+            .tiktok-subtitle{
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-section{
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 70px 6%;
+            }
+            .about-image img{
+                height: 420px
+            }
+            .about-content h2{
+                font-size: clamp(28px, 5vw, 42px);
+            }
+            .about-stats{
+               flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 400px) {
+            .about-image img{
+                height: 330px;
+            }
+            .stsat-card{
+                min-width: 0;
+                padding: 16px 10px;
+                flex: 1;
+            }
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+            .skills-ticker{
+                animation-play-state: paused;
+            }
+        }
+    @media (max-width: 768px) {
+       .navbar{
+        padding: 16px 5%;
+       }
+       .menu-toggle {
+        display: block;
+       }
+       .nav-links{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #111827;
+        padding: 25px;
+        z-index: 1000;
+       }
+       .nav-links.active{
+        display: flex;
+       }
+       .hero{
+        min-height: 70vh;
+        padding: 40px 6%;
+       }
+       .hero-description{
+        font-size: 16px;
+       }
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <h2 class="logo">CodeWithNgozi</h2>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+            ☰
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact" class="btn">Hire Me</a></li>
+        </ul>   
+    </nav>
+    <section class="hero" id="home">
+    <p class="availability"><span class="status-dot" aria-hidden="true"></span>Available for work</p>
+    <h1>Ngozi <span class="highlight">Judith</span></h1>
+   <h2 class="hero-title">I'm a <span id="changing-title">Web Developer</span></h2>
+   <p class="hero-description">I build responsive websites, create engaging web experiences,
+     and design visual identities that help brands stand out. From frontend development to
+    UI/UX and brand identity design, I turn ideas into digital experiences.</p>
+    <div class="hero-buttons">
+        <a href="#projects" class="hero-btn primary-btn">View my Projects 
+            <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="https://wa.me/2348058674247" class="hero-btn secondary-btn" target="_blank" rel="noopener noreferrer">Let's talk  
+                <i class="fa-brands fa-whatsapp whatsapp-icon" aria-hidden="true"></i></a>
+           
+    </div>
+    </section>
+    <section class="skills-ticker">
+        <div class="skills-track">
+            <span class="skill">HTML<i class="fa-brands fa-html5"></i></span>
+            <span class="skill">CSS<i class="fa-brands fa-css3-alt"></i></span>
+            <span class="skill">JavaScript<i class="fa-brands fa-js"></i></span>
+            <span class="skill">React<i class="fa-brands fa-react"></i></span>
+            <span class="skill">Node.js<i class="fa-brands fa-node-js"></i></span>
+            <span class="skill">PHP<i class="fa-brands fa-php"></i></span>
+            <span class="skill">WordPress<i class="fa-brands fa-wordpress"></i></span>
+            <span class="skill">Sass<i class="fa-brands fa-sass"></i></span>
+            <span class="skill">Git<i class="fa-brands fa-git-alt"></i></span>
+            <span class="skill">Bootstrap<i class="fa-brands fa-bootstrap"></i></span>
+            <span class="skill">Figma<i class="fa-brands fa-figma"></i></span>
+            <span class="skill">Illustrator<span class="adobe-app-icon illustrator-icon" aria-hidden="true">Ai</span></span>
+            <span class="skill">Photoshop<span class="adobe-app-icon photoshop-icon" aria-hidden="true">Ps</span></span>
+        </div>
+    </section>
+    <section  class="about-section" id="about">
+        <div class="about-image">
+            <img src="judith.png" alt="Ngozi Judith" ><span class="image-badge">Web Developer</span>
+        </div>
+        <div class="about-content">
+            <span class="section-label">ABOUT ME</span>
+            <h2>Creating With <br>Purpose.</h2>
+            <P>I'm <strong>Ngozi Judith</strong>, a web developer and designer passionate about
+            turning ideas into polished digital products. From responsive websites to engaging
+    web experiences, i build things that work and look great.</P>
+    <p>I enjoy creating digital experiences, exploring new technologies, and bringing creatives 
+        ideas to life. I also design Visuals identities that help businesses stand out.</p>
+        <P>My toolkit includes <strong>HTML, CSS, JavaScript, WordPress, React</strong>
+            and design tools like <strong>Figma and Photoshop</strong></P>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <h3>5+</h3>
+                    <span>Projects Built</span>
+                </div>
+                <div class="stat-card">
+                    <h3>2+</h3>
+                    <span>Years Learning & Craeting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container projects-section" id="projects">
+
+        <!-- HEADER -->
+        <h1 class="section-title">Projects</h1>
+        <p class="tiktok-subtitle">
+            <svg class="tiktok-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+            From the TikTok series – Where i Build in Public sharing my coding journey, projects, and growth as a web developer.
+        </p>
+
+        <!-- PROJECTS GRID -->
+        <div class="projects-grid">
+
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+                <a href="https://magical-croquembouche-800750.netlify.app" target="_blank" rel="noopener noreferrer" class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                        <div class="browser-url">magical-croquembouche-800750.netlify.app</div>
+                    </div>
+                    <div class="mockup-preview">
+                        <!-- Dynamic screenshot generator -->
+                        <img src="https://api.microlink.io/?url=https://magical-croquembouche-800750.netlify.app&screenshot=true&embed=screenshot.url" 
+                             alt="Project 1 Preview" 
+                             class="site-screenshot"
+                             onerror="this.src='https://via.placeholder.com/600x400/1a1a2e/4facfe?text=Live+Site+Preview'">
+                    </div>
+                </a>
+                <div>
+                    <div class="episode-label">Project 01</div>
+                    <h3 class="project-title">Live Website</h3>
+                    <p class="project-desc">Visit the live website to explore this project.</p>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+                <a href="https://rococo-torte-62e171.netlify.app" target="_blank" rel="noopener noreferrer" class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                        <div class="browser-url">rococo-torte-62e171.netlify.app</div>
+                    </div>
+                    <div class="mockup-preview">
+                        <img src="https://api.microlink.io/?url=https://rococo-torte-62e171.netlify.app&screenshot=true&embed=screenshot.url" 
+                             alt="Project 2 Preview" 
+                             class="site-screenshot"
+                             onerror="this.src='https://via.placeholder.com/600x400/1a1a2e/4facfe?text=Live+Site+Preview'">
+                    </div>
+                </a>
+                <div>
+                    <div class="episode-label">Project 02</div>
+                    <h3 class="project-title">Live Website</h3>
+                    <p class="project-desc">Visit the live website to explore this project.</p>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+            <div class="project-card">
+                <a href="https://radiant-sunshine-a86811.netlify.app" target="_blank" rel="noopener noreferrer" class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                        <div class="browser-url">radiant-sunshine-a86811.netlify.app</div>
+                    </div>
+                    <div class="mockup-preview">
+                        <img src="https://api.microlink.io/?url=https://radiant-sunshine-a86811.netlify.app&screenshot=true&embed=screenshot.url" 
+                             alt="Project 3 Preview" 
+                             class="site-screenshot"
+                             onerror="this.src='https://via.placeholder.com/600x400/1a1a2e/4facfe?text=Live+Site+Preview'">
+                    </div>
+                </a>
+                <div>
+                    <div class="episode-label">Project 03</div>
+                    <h3 class="project-title">Live Website</h3>
+                    <p class="project-desc">Visit the live website to explore this project.</p>
+                </div>
+            </div>
+
+            <!-- PROJECT 4 -->
+            <div class="project-card">
+                <a href="https://effervescent-salamander-013f92.netlify.app" target="_blank" rel="noopener noreferrer" class="browser-mockup">
+                    <div class="browser-bar">
+                        <div class="browser-dot dot-red"></div>
+                        <div class="browser-dot dot-yellow"></div>
+                        <div class="browser-dot dot-green"></div>
+                        <div class="browser-url">effervescent-salamander-013f92.netlify.app</div>
+                    </div>
+                    <div class="mockup-preview">
+                        <img src="https://api.microlink.io/?url=https://effervescent-salamander-013f92.netlify.app&screenshot=true&embed=screenshot.url" 
+                             alt="Project 4 Preview" 
+                             class="site-screenshot"
+                             onerror="this.src='https://via.placeholder.com/600x400/1a1a2e/4facfe?text=Live+Site+Preview'">
+                    </div>
+                </a>
+                <div>
+                    <div class="episode-label">Project 04</div>
+                    <h3 class="project-title">Live Website</h3>
+                    <p class="project-desc">Visit the live website to explore this project.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <div class="contact-wrapper">
+            <!-- LEFT SIDE: CONTACT INFO & SOCIAL LINKS -->
+            <div class="contact-info">
+                <span class="contact-label">Contact</span>
+                <h2>Let's build something.</h2>
+                <p class="contact-description">
+                    Have a project in mind? Need a website or mobile app? Reach out — I've got you covered.
+                </p>
+
+                <div class="social-links">
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@kreativecode.studio?_r=1&_t=ZS-9ARnPhjkb7E" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-card">
+                        <div class="social-left">
+                            <div class="social-icon tiktok-icon">
+                                <svg viewBox="0 0 448 512">
+                                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                                </svg>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-platform">TikTok</span>
+                                <span class="social-handle">@kreativecode.studio</span>
+                            </div>
+                        </div>
+                        <span class="social-arrow">→</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/ngoz_ijudith?vrfl=MXZoZTgwY2FvM2U4NQ==" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-card">
+                        <div class="social-left">
+                            <div class="social-icon instagram-icon">
+                                <svg viewBox="0 0 448 512">
+                                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.2 33.9-41.8 41.8-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-33.9-22.2-41.8-41.8-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.2-33.9 41.8-41.8 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 33.9 22.2 41.8 41.8 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                                </svg>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-platform">Instagram</span>
+                                <span class="social-handle">@ngoz_ijudith</span>
+                            </div>
+                        </div>
+                        <span class="social-arrow">→</span>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/2348058674247" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-card">
+                        <div class="social-left">
+                            <div class="social-icon whatsapp-icon">
+                                <svg viewBox="0 0 448 512">
+                                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                                </svg>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-platform">WhatsApp</span>
+                                <span class="social-handle">Chat directly</span>
+                            </div>
+                        </div>
+                        <span class="social-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: CONTACT FORM -->
+            <div class="contact-form">
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            Your Name
+                        </label>
+                        <input type="text" 
+                               id="name" 
+                               name="name" 
+                               class="form-input" 
+                               placeholder="John Doe" 
+                               required>
+                        <svg class="input-icon" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            Email
+                        </label>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               class="form-input" 
+                               placeholder="hello@example.com" 
+                               required>
+                        <svg class="input-icon" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                            </svg>
+                            Message
+                        </label>
+                        <textarea id="message" 
+                                  name="message" 
+                                  class="form-textarea" 
+                                  placeholder="I need a website for my business..." 
+                                  required></textarea>
+                        <svg class="input-icon textarea-icon" viewBox="0 0 24 24">
+                            <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                        </svg>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <svg viewBox="0 0 448 512">
+                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z"/>
+                        </svg>
+                        Send Message on WhatsApp
+                    </button>
+                    
+                    <p class="form-hint">
+                        <svg viewBox="0 0 448 512">
+                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157z"/>
+                        </svg>
+                        This will open WhatsApp with your message
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <footer class="footer">
+        <p>Designed & built by <span>Ngozi Judith</span> — © 2026. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("active");
+                const isOpen = navLinks.classList.contains("active");
+                menuToggle.innerText = isOpen ? "✕" : "☰";
+                menuToggle.setAttribute("aria-expanded", String(isOpen));
+            });
+
+            navLinks.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                    menuToggle.innerText = "☰";
+                    menuToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
+        const titles = [
+            "Web Developer", 
+            "Frontend Developer",
+            "Backend Developer",
+            "Full Stack Developer",
+            "Software Engineer",
+            "WordPress Developer",
+            "UI/UX Designer", 
+            "Graphic Designer",
+            "Brand Identity Designer"
+        ];
+
+        const changingTitle = document.getElementById("changing-title");
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (changingTitle && !prefersReducedMotion) {
+            let titleIndex = 0;
+            let characterIndex = titles[titleIndex].length;
+            let isDeleting = true;
+            changingTitle.textContent = titles[titleIndex];
+
+            const typeNextCharacter = () => {
+                const currentTitle = titles[titleIndex];
+                changingTitle.textContent = currentTitle.slice(0, characterIndex);
+
+                if (!isDeleting && characterIndex === currentTitle.length) {
+                    isDeleting = true;
+                    setTimeout(typeNextCharacter, 1400);
+                    return;
+                }
+
+                if (isDeleting && characterIndex === 0) {
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                }
+
+                characterIndex += isDeleting ? -1 : 1;
+                setTimeout(typeNextCharacter, isDeleting ? 55 : 100);
+            };
+
+            setTimeout(typeNextCharacter, 1400);
+        }
+        const whatsappForm = document.getElementById("whatsappForm");
+        if (whatsappForm) {
+            whatsappForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(whatsappForm);
+                const name = String(formData.get("name") || "").trim();
+                const email = String(formData.get("email") || "").trim();
+                const message = String(formData.get("message") || "").trim();
+                const phoneNumber = "2348058674247";
+                const text = `New Project Inquiry\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const whatsappURL = `https://wa.me/${phoneNumber}?${new URLSearchParams({ text })}`;
+
+                window.open(whatsappURL, "_blank", "noopener,noreferrer");
+            });
+        }
+    </script>
+</body>
+</html>
